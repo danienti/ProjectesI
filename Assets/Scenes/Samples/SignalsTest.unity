@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 622590403}
   - component: {fileID: 622590402}
   m_Layer: 0
-  m_Name: B
+  m_Name: Receiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 2107955830}
   - component: {fileID: 2107955829}
   m_Layer: 0
-  m_Name: A
+  m_Name: Sender
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
