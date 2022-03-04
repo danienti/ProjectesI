@@ -4,10 +4,11 @@ public class PlayerController : MonoBehaviour
 {
 	Rigidbody2D rb;
 	[SerializeField] float jumpMagnitude = 1.0f;
-	[SerializeField] float speed = 1.0f;
+	[SerializeField] float speedMagnitude = 1.0f;
 	float horizontal = 0.0f;
+	bool grounded;
 
-	private void Start()
+	private void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
 	}
@@ -22,15 +23,20 @@ public class PlayerController : MonoBehaviour
 			horizontal = 1.0f;
 		else
 			horizontal = 0.0f;
+
+		grounded = Physics2D.Raycast(transform.position, Vector2.down, 0.6f);
+		Debug.DrawLine(transform.position, transform.position + Vector3.down * 0.6f, Color.red);
 	}
 
 	private void FixedUpdate()
 	{
-		rb.velocity = new Vector3(horizontal * speed, rb.velocity.y);
+		if(grounded)
+			rb.AddForce(Vector3.right * horizontal * speedMagnitude);
 	}
 
 	void Jump()
 	{
-		rb.AddForce(Vector3.up * jumpMagnitude);
+		if(grounded)
+			rb.AddForce(Vector3.up * jumpMagnitude);
 	}
 }
