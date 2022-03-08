@@ -4,8 +4,14 @@ public class PlayerController : MonoBehaviour
 {
 	Rigidbody2D rb;
 	[SerializeField] float jumpMagnitude = 1.0f;
+<<<<<<< Updated upstream
 	[SerializeField] float speedMagnitude = 1.0f;
 	float horizontal = 0.0f;
+=======
+	[SerializeField] float movementMagnitude = 1.0f;
+	[SerializeField] float horizontal = 0.0f;
+
+>>>>>>> Stashed changes
 	bool grounded;
 
 	private void Awake()
@@ -30,8 +36,14 @@ public class PlayerController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+<<<<<<< Updated upstream
 		if(grounded)
 			rb.AddForce(Vector3.right * horizontal * speedMagnitude);
+=======
+		//if(horizontal != 0.0f && grounded)
+		//	rb.AddForce(Vector3.right * horizontal * movementMagnitude, ForceMode2D.Impulse);
+		rb.velocity = Vector3.right * horizontal * movementMagnitude;
+>>>>>>> Stashed changes
 	}
 
 	void Jump()
@@ -40,3 +52,6 @@ public class PlayerController : MonoBehaviour
 			rb.AddForce(Vector3.up * jumpMagnitude);
 	}
 }
+
+
+
