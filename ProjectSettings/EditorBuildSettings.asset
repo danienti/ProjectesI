@@ -6,6 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Samples/SignalsTest.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  m_configObjects: {}
+    path: Assets/Scenes/PlayerControl.unity
+    guid: 6138654a48ae11145a98085e123a8f56
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 4ff524c1c21937445923b8a24a1406bc, type: 2}
