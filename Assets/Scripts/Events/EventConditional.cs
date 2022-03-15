@@ -6,39 +6,45 @@ using UnityEngine.Events;
 
 public class EventConditional : MonoBehaviour
 {
-	public Condition condition = new Condition();
+	public EventCondition eventCondition = new EventCondition();
 	public UnityEvent onTrue, onFalse;
 
-	public void DoCheck() => Check();
+	public bool a;
+
+	[ContextMenu("Check")]
 	public bool Check()
 	{
-		bool result = condition.Check;
+		bool result = eventCondition.Check;
 		Debug.Log("Event condition result is " + result);
 		(result ? onTrue : onFalse)?.Invoke();
 		return result;
 	}
 }
 
-public enum ConditionType { Value, NotValue, And, Or, True, False }
+public enum EventConditionType { Value, NotValue, And, Or, True, False }
 
-public class Condition
+[Serializable]
+public class BoolCondition : SerializableCallback<bool> { }
+
+[Serializable]
+public class EventCondition
 {
-	public ConditionType type;
+	public EventConditionType type;
 	[Tooltip("Used for types 'And' and 'Or'")]
-	public List<Condition> subConditions = new List<Condition>();
+	public List<EventCondition> subConditions = new List<EventCondition>();
 	[Tooltip("Used for types 'Value' and 'NotValue'")]
-	public Func<bool> value;
+	public BoolCondition value;
 
-	public Condition() => type = ConditionType.True;
+	public EventCondition() => type = EventConditionType.True;
 
 	public bool Check => type switch
 	{
-		ConditionType.Value => value.Invoke(),
-		ConditionType.NotValue => !value.Invoke(),
-		ConditionType.And => subConditions.Count > 0 && subConditions.All(x => x.Check),
-		ConditionType.Or => subConditions.Any(x => x.Check),
-		ConditionType.True => true,
-		ConditionType.False => false,
+		EventConditionType.Value => value.Invoke(),
+		EventConditionType.NotValue => !value.Invoke(),
+		EventConditionType.And => subConditions.Count > 0 && subConditions.All(x => x.Check),
+		EventConditionType.Or => subConditions.Any(x => x.Check),
+		EventConditionType.True => true,
+		EventConditionType.False => false,
 		_ => false,
 	};
 }

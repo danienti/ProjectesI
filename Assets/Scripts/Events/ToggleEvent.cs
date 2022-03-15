@@ -5,8 +5,9 @@ public class ToggleEvent : MonoBehaviour
 {
 	public UnityEvent<bool> onToggle;
 	public UnityEvent onOn, onOff;
-	public bool on;
+	bool on;
 
+	[ContextMenu("Toggle")]
 	public void Toggle() => Set(!on);
 
 	public void Set(bool value)
