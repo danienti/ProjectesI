@@ -7,9 +7,5 @@ PhysicsMaterial2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Player
-<<<<<<< Updated upstream
   friction: 0.2
-=======
-  friction: 0.4
->>>>>>> Stashed changes
   bounciness: 0
